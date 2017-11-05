@@ -66,6 +66,7 @@ body {
 			text = game.add.text(12, 23, 'Score = 0', {fill: '#000000'});
 			text.fixedToCamera = true;
 			live = game.add.text(30,40,'Lives: 2',{fill: '#000000'});
+			live.fixedToCamera = true;
 			goombas = game.add.group();
 			goombas.enableBody = true;
 			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
