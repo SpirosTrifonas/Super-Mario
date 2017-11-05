@@ -151,7 +151,7 @@ body {
 			} else {
 				if (game.time.now - invulnerable > 2000)  {
 					liv = liv - 1;
-					live.text = 'Lives: ' + score;
+					live.text = 'Lives: ' + liv;
 					if (liv == 0) {
 						player.frame = 6;
 						player.body.enable = false;
