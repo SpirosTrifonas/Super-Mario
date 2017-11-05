@@ -14,7 +14,7 @@ body {
 </head>
 <body>
 	<script type="text/javascript">
-		var lives = 3;
+		var liv = 3;
 		var score = 0;
 		var invulnerable = 0;
 		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
@@ -150,9 +150,9 @@ body {
 				});
 			} else {
 				if (game.time.now - invulnerable > 2000)  {
-					lives--;
+					liv = liv - 1;
 					live.text = 'Lives: ' + score;
-					if (lives == 0) {
+					if (liv == 0) {
 						player.frame = 6;
 						player.body.enable = false;
 						player.animations.stop();
