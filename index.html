@@ -66,7 +66,7 @@ body {
 			coins.callAll('animations.play', 'animations', 'spin');
 			text = game.add.text(12, 23, 'Score = 0', {fill: '#000000'});
 			text.fixedToCamera = true;
-			live = game.add.text(30,40,'Lives: 2',{fill: '#000000'});
+			live = game.add.text(30,40,'Lives: 3',{fill: '#000000'});
 			live.fixedToCamera = true;
 			invulnerable = game.time.now;
 			
@@ -149,9 +149,9 @@ body {
 					goomba.kill();
 				});
 			} else {
-				
 				if (game.time.now - invulnerable > 2000)  {
 					lives--;
+					live.text = 'Lives: ' + lives;
 					if (lives == 0) {
 						player.frame = 6;
 						player.body.enable = false;
