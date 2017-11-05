@@ -80,6 +80,16 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
+			
+			ups = game.add.group();
+			ups.enableBody= true;
+			map.createFromTiles(1, null, 'up', 'stuff', ups);
+			ups.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
+					2, true);
+			ups.callAll('animations.play', 'animations', 'walk');
+			ups.setAll('body.bounce.x', 1);
+			ups.setAll('body.velocity.x', 10);
+			ups.setAll('body.gravity.y', 500);
 
 			player = game.add.sprite(16, game.world.height - 48, 'mario');
 			game.physics.arcade.enable(player);
