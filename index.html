@@ -14,6 +14,8 @@ body {
 </head>
 <body>
 	<script type="text/javascript">
+		var lives = 3;
+		var score = 0;
 		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
 			preload : preload,
 			create : create,
@@ -127,10 +129,12 @@ body {
 
 		function coinOverlap(player, coin) {
 			coin.kill();
+			score = score + 5;
 		}
 
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
+				score = score + 10;
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
@@ -139,12 +143,15 @@ body {
 					goomba.kill();
 				});
 			} else {
+				lives -=1;
+				if(lives == 0) {
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true;
 				});
+				}
 			}
 		}
 	</script>
