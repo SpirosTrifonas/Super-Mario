@@ -16,6 +16,7 @@ body {
 	<script type="text/javascript">
 		var lives = 3;
 		var score = 0;
+		var invulnerable;
 		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
 			preload : preload,
 			create : create,
@@ -67,6 +68,8 @@ body {
 			text.fixedToCamera = true;
 			live = game.add.text(30,40,'Lives: 2',{fill: '#000000'});
 			live.fixedToCamera = true;
+			invulnerable = game.time.now;
+			
 			goombas = game.add.group();
 			goombas.enableBody = true;
 			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
@@ -146,14 +149,18 @@ body {
 					goomba.kill();
 				});
 			} else {
-				
-				player.frame = 6;
-				player.body.enable = false;
-				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					game.paused = true;
-				});
-				
+				if (game.time.now - invulnerable > 2000)  {
+					lives--;
+					if (lives == 0) {
+						player.frame = 6;
+						player.body.enable = false;
+						player.animations.stop();
+						game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+							game.paused = true;
+						});
+					}
+				}
+				invulnerable = game.time.now;
 			}
 		}
 	</script>
