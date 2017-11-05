@@ -68,7 +68,7 @@ body {
 			text.fixedToCamera = true;
 			live = game.add.text(30,40,'Lives: 2',{fill: '#000000'});
 			live.fixedToCamera = true;
-			invulnerable = game.time.now;
+			
 			
 			goombas = game.add.group();
 			goombas.enableBody = true;
@@ -149,6 +149,7 @@ body {
 					goomba.kill();
 				});
 			} else {
+				
 				if (game.time.now - invulnerable > 2000)  {
 					lives--;
 					if (lives == 0) {
@@ -159,8 +160,9 @@ body {
 							game.paused = true;
 						});
 					}
-				}
 				invulnerable = game.time.now;
+				}
+				
 			}
 		}
 	</script>
