@@ -64,6 +64,7 @@ body {
 					[ 0, 0, 1, 2 ], 3, true);
 			coins.callAll('animations.play', 'animations', 'spin');
 			text = game.add.text(12, 23, 'Score = 0', {fill: '#000000'});
+			text.fixedToCamera = true;
 			
 			goombas = game.add.group();
 			goombas.enableBody = true;
