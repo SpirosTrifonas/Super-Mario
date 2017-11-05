@@ -68,7 +68,7 @@ body {
 			text.fixedToCamera = true;
 			live = game.add.text(30,40,'Lives: 2',{fill: '#000000'});
 			live.fixedToCamera = true;
-			
+			invulnerable = game.time.now;
 			
 			goombas = game.add.group();
 			goombas.enableBody = true;
