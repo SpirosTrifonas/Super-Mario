@@ -83,7 +83,7 @@ body {
 			
 			ups = game.add.group();
 			ups.enableBody= true;
-			map.createFromTiles(20, null, 'up', 'stuff', ups);
+			map.createFromTiles(3, null, 'up', 'stuff', ups);
 			ups.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
 					2, true);
 			ups.callAll('animations.play', 'animations', 'walk');
