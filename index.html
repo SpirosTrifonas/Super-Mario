@@ -73,9 +73,9 @@ body {
 					[ 0, 0, 1, 2 ], 3, true);
 			coins.callAll('animations.play', 'animations', 'spin');
 			
-			text = game.add.text(12, 23, 'Score = 0', {font:'18px Arial', fill: '#fff', align:'center'});
+			text = game.add.text(12, 23, 'Score = 0', {font:'18px Arial', fill: '#000', align:'center'});
 			text.fixedToCamera = true;
-			live = game.add.text(30,40,'Lives: 1', {font:'18px Arial', fill: '#fff', align:'center'});
+			live = game.add.text(30,40,'Lives: 1', {font:'18px Arial', fill: '#000', align:'center'});
 			live.fixedToCamera = true;
 			invulnerable = game.time.now;
 			
