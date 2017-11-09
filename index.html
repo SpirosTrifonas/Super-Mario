@@ -17,6 +17,9 @@ body {
 		var liv = 1;
 		var score = 0;
 		var invulnerable = 0;
+		var scoin;
+		var stomp;
+		
 		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
 			preload : preload,
 			create : create,
@@ -93,8 +96,8 @@ body {
 			ups.setAll('body.velocity.x', -20);
 			ups.setAll('body.gravity.y', 500);
 			
-			var scoin = game.add.audio('s_coin');
-			var stomp = game.add.audio('s_stomp');
+			scoin = game.add.audio('s_coin');
+			stomp = game.add.audio('s_stomp');
 			
 			
 
