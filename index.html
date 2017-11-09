@@ -72,9 +72,10 @@ body {
 			coins.callAll('animations.add', 'animations', 'spin',
 					[ 0, 0, 1, 2 ], 3, true);
 			coins.callAll('animations.play', 'animations', 'spin');
-			text = game.add.text(12, 23, 'Score = 0', {fill: '#000000'});
+			
+			text = game.add.text(12, 23, 'Score = 0', {font:'18px Arial', fill: '#fff', align:'center'});
 			text.fixedToCamera = true;
-			live = game.add.text(30,40,'Lives: 3',{fill: '#000000'});
+			live = game.add.text(30,40,'Lives: 1', {font:'18px Arial', fill: '#fff', align:'center'});
 			live.fixedToCamera = true;
 			invulnerable = game.time.now;
 			
