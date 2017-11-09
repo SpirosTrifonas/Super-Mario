@@ -39,8 +39,8 @@ body {
 
 			this.load.tilemap('level', 'assets/map2.json', null,
 					Phaser.Tilemap.TILED_JSON);
-			this.load.audio('s_stomp', 'audio/stomp.wav');
-			this.load.audio('s_coin', 'audio/coin.wav');
+			this.load.audio('s_stomp', ['audio/stomp.mp3', 'audio/stomp.ogg']);
+			this.load.audio('s_coin', ['audio/coin.mp3', 'audio/coin.ogg']);
 		}
 
 		function create() {
