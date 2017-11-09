@@ -19,6 +19,7 @@ body {
 		var invulnerable = 0;
 		var scoin;
 		var stomp;
+		var jump;
 		
 		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
 			preload : preload,
@@ -44,6 +45,7 @@ body {
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('s_stomp', ['audio/stomp.mp3', 'audio/stomp.ogg']);
 			this.load.audio('s_coin', ['audio/coin.mp3', 'audio/coin.ogg']);
+			this.load.audio('jump', ['audio/jump.mp3', 'audio/jump.ogg']);
 		}
 
 		function create() {
@@ -98,7 +100,7 @@ body {
 			
 			scoin = game.add.audio('s_coin');
 			stomp = game.add.audio('s_stomp');
-			
+			jump  = game.add.audio('jump');
 			
 
 			player = game.add.sprite(16, game.world.height - 48, 'mario');
@@ -144,6 +146,7 @@ body {
 				if (cursors.up.isDown && player.body.onFloor()) {
 					player.body.velocity.y = -190;
 					player.animations.stop();
+					jump.play();
 				}
 
 				if (player.body.velocity.y != 0) {
