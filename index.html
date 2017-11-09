@@ -169,9 +169,10 @@ body {
 
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
-				stomp.play();
+				
 				goomba.animations.stop();
 				goomba.frame = 2;
+				stomp.play();
 				goomba.body.enable = false;
 				player.body.velocity.y = -80;
 				game.time.events.add(Phaser.Timer.SECOND, function() {
