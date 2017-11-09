@@ -39,6 +39,8 @@ body {
 
 			this.load.tilemap('level', 'assets/map2.json', null,
 					Phaser.Tilemap.TILED_JSON);
+			this.load.audio('s_stomp', 'audio/stomp.wav');
+			this.load.audio('s_coin', 'audio/coin.wav');
 		}
 
 		function create() {
@@ -90,6 +92,11 @@ body {
 			ups.setAll('body.bounce.x', 1);
 			ups.setAll('body.velocity.x', -20);
 			ups.setAll('body.gravity.y', 500);
+			
+			var scoin = game.add.audio('s_coin');
+			var stomp = game.add.audio('s_stomp');
+			
+			
 
 			player = game.add.sprite(16, game.world.height - 48, 'mario');
 			game.physics.arcade.enable(player);
@@ -148,6 +155,7 @@ body {
 
 		function coinOverlap(player, coin) {
 			coin.kill();
+			scoin.play();
 			score++;
 			text.text = 'Score: ' + score;
 		}
@@ -159,6 +167,7 @@ body {
 
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
+				stomp.play();
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
