@@ -133,6 +133,7 @@ body {
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.collide(ups, layer);
+			game.physics.arcade.collide(maskboys, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			game.physics.arcade.overlap(player, ups, upOverlap);
