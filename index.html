@@ -92,7 +92,7 @@ body {
 			
 			maskboys = game.add.group();
 			maskboys.enableBody = true;
-			map.createFromTiles(1, null, 'maskboy', 'stuff', maskboys);
+			map.createFromTiles(9, null, 'maskboy', 'stuff', maskboys);
 			maskboys.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
 					2, true);
 			maskboys.callAll('animations.play', 'animations', 'walk');
