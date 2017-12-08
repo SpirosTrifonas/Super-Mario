@@ -40,7 +40,8 @@ body {
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 			this.load.spritesheet('up', 'assets/up.png', 16, 16);
-
+			this.load.spritesheet('maskboy', 'assets/maskboy.png', 16, 16);
+			
 			this.load.tilemap('level', 'assets/map2.json', null,
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('s_stomp', ['audio/stomp.mp3', 'audio/stomp.ogg']);
@@ -89,6 +90,16 @@ body {
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
 			
+			maskboys = game.add.group();
+			maskboys.enableBody = true;
+			map.createFromTiles(1, null, 'maskboy', 'stuff', maskboys);
+			maskboys.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
+					2, true);
+			maskboys.callAll('animations.play', 'animations', 'walk');
+			maskboys.setAll('body.bounce.x', 1);
+			maskboys.setAll('body.velocity.x', -20);
+			maskboys.setAll('body.gravity.y', 500);
+			
 			ups = game.add.group();
 			ups.enableBody= true;
 			map.createFromTiles(3, null, 'up', 'stuff', ups);
@@ -125,6 +136,7 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			game.physics.arcade.overlap(player, ups, upOverlap);
+			game.physics.arcade.overlap(player, maskboys, maskOverlap);
 
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -183,6 +195,37 @@ body {
 				player.body.velocity.y = -80;
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
+				});
+			} else {
+				if (game.time.now - invulnerable > 2000)  {
+					liv = liv - 1;
+					live.text = 'Lives: ' + liv;
+					if (liv == 0) {
+						player.frame = 6;
+						player.body.enable = false;
+						player.animations.stop();
+						game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+							game.paused = true;
+						});
+					}
+				invulnerable = game.time.now;
+				}
+				
+			}
+		}
+		
+		function maskOverlap(player, maskboy) {
+			if (player.body.touching.down) {
+				
+				maskboy.animations.stop();
+				maskboy.frame = 2;
+				stomp.play();
+				score = score + 5;
+				text.text = 'Score: ' + score;
+				maskboy.body.enable = false;
+				player.body.velocity.y = -80;
+				game.time.events.add(Phaser.Timer.SECOND, function() {
+					maskboy.kill();
 				});
 			} else {
 				if (game.time.now - invulnerable > 2000)  {
