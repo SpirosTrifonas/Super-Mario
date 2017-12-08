@@ -93,9 +93,7 @@ body {
 			maskboys = game.add.group();
 			maskboys.enableBody = true;
 			map.createFromTiles(9, null, 'maskboy', 'stuff', maskboys);
-			maskboys.animations.add('walkRight', [ 1, 2 ], 10, true);
-			maskboys.animations.add('walkLeft', [ 4, 5 ], 10, true);
-			maskboys.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
+			maskboys.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],[3,4],
 					2, true);
 			maskboys.callAll('animations.play', 'animations', 'walk');
 			maskboys.setAll('body.bounce.x', 1);
