@@ -21,20 +21,7 @@ body {
 		var stomp;
 		var jump;
 		
-		var menu = {
-			create: function() {
-				var nameLabel = game.add.text{80, 80, 'My game', {font: '30px Arial',
-										  fill: '#ffffff'});
-							      
-				var startLabel = game.add.text{80, 180, 'W start', {font: '30px Arial',
-										  fill: '#ffffff'});
-				var wkey = game.input.keyboard.addKey(Phaser.Keyboard.W);
-				wkey.onDown.addOnce(this.start, this);
-			},
-				start: function() {
-					game.start.start('play');
-				},
-		};
+		
 		
 		
 		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
@@ -67,8 +54,7 @@ body {
 
 		function create() {
 			
-			game.state.add('menu',menu);
-			game.state.start('menu');
+			
 			
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas);
 			game.scale.pageAlignHorizontally = true;
